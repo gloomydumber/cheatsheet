@@ -11,6 +11,7 @@ import rehypeExternalLinks from "rehype-external-links";
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: "/cheatsheet/",
   plugins: [
     mdx({
       remarkPlugins: [remarkGfm, remarkAlert],
