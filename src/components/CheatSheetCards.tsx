@@ -136,7 +136,7 @@ export default function CheatSheetCards() {
         <Grid size={6} sx={{ display: "flex" }}>
           <CheatSheetCard backgroundImage={noditNodes}>
             <CheatSheetCardContent
-              hashLink="/#node-api-usage-example"
+              hashLink="#node-api-usage-example"
               exampleName="Node API Usage Example"
               newTab={false}
               title="Elastic Node"
@@ -154,7 +154,7 @@ export default function CheatSheetCards() {
         <Grid size={6} sx={{ display: "flex" }}>
           <CheatSheetCard backgroundImage={web3DataAPI}>
             <CheatSheetCardContent
-              hashLink="/#web3-data-api-usage-example"
+              hashLink="#web3-data-api-usage-example"
               exampleName="Web3 Data API Usage Example"
               newTab={false}
               title="Web3 Data API"
@@ -171,7 +171,7 @@ export default function CheatSheetCards() {
         <Grid size={6} sx={{ display: "flex" }}>
           <CheatSheetCard backgroundImage={webhook}>
             <CheatSheetCardContent
-              hashLink="/#webhook-usage-example"
+              hashLink="#webhook-usage-example"
               exampleName="Webhook Usage Example"
               newTab={false}
               title="Webhook / Stream"
