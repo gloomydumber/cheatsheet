@@ -1,0 +1,390 @@
+/* ========================================
+  Root Theme Variables
+======================================== */
+:root {
+  --cheatsheet-nodit-color: #00d179;
+  --cheatsheet-background-color: #1a1a1a;
+  --cheatsheet-text-color: #eaeaea;
+}
+
+/* ========================================
+  Global Layout & Typography
+======================================== */
+body {
+  background-color: var(--cheatsheet-background-color);
+  color: var(--cheatsheet-text-color);
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: NanumSquareAcr, sans-serif;
+  ::selection {
+    background: var(--cheatsheet-nodit-color);
+    color: black;
+  }
+}
+
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Main prose block (markdown content) */
+.prose {
+  margin-bottom: 100px;
+}
+
+/* Paragraphs inside prose */
+.prose p {
+  margin-block-start: 0.8em;
+  margin-block-end: 0.8em;
+}
+
+/* ========================================
+  Headers (Page Header & Titles)
+======================================== */
+header {
+  border-bottom: 1px dotted var(--cheatsheet-nodit-color);
+}
+
+header h1 {
+  font-size: 30px;
+  margin-bottom: 0;
+  color: #ffffffcc;
+}
+
+header h2 {
+  font-size: 18px;
+  color: #ffffffcc;
+}
+
+/* Document-level headings */
+h1 {
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+/* Shared heading styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: NanumSquareAceb, sans-serif;
+  font-weight: bold;
+  letter-spacing: -0.02em;
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
+  color: var(--cheatsheet-nodit-color);
+}
+
+/* Prose & headings line-height */
+.prose,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.8;
+}
+
+/* ========================================
+  Inline Text & Links
+======================================== */
+a {
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: NanumSquareAcr, sans-serif;
+  color: var(--cheatsheet-nodit-color);
+}
+
+strong,
+b {
+  font-family: NanumSquareAcb, sans-serif;
+  font-weight: bolder;
+}
+
+em {
+  font-style: italic;
+}
+
+/* Nodit brand color utility */
+.nodit-color {
+  color: var(--cheatsheet-nodit-color);
+}
+
+/* ========================================
+  Lists & Blockquotes
+======================================== */
+ul {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  padding-inline-start: 40px;
+  unicode-bidi: isolate;
+}
+
+ol {
+  display: block;
+  list-style-type: decimal;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  padding-inline-start: 40px;
+  unicode-bidi: isolate;
+}
+
+li {
+  display: list-item;
+  unicode-bidi: isolate;
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
+}
+
+/* Ordered-list marker styling (numbers) */
+ol li::marker {
+  font-variant-numeric: tabular-nums; /* aligns numbers evenly */
+  content: counters(list-item, ".") ".   "; /* extra spaces after the dot */
+}
+
+/* Default list bullet / marker color */
+li::marker {
+  color: var(--cheatsheet-nodit-color);
+}
+
+/* Blockquote styling */
+blockquote {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+  unicode-bidi: isolate;
+  color: #aaa;
+  padding-left: 10px;
+  border-left: 1px dotted var(--cheatsheet-nodit-color);
+}
+
+/* ========================================
+  Auto Link (Anchor icon inside prose)
+======================================== */
+.prose .anchor-link {
+  margin-right: 8px;
+  cursor: pointer;
+  opacity: 0.5;
+  color: var(--cheatsheet-nodit-color);
+  text-decoration: none;
+}
+
+.prose .anchor-link:hover {
+  opacity: 1;
+}
+
+/* ========================================
+  Details / Summary (Collapsible Sections)
+======================================== */
+summary {
+  cursor: pointer;
+  display: inline-block; /* only text area clickable */
+  position: relative; /* anchor for ::before */
+  margin-left: 1.2rem; /* make room for the marker */
+}
+
+/* hide browser’s default marker (Safari/Chrome/etc.) */
+summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Closed state marker */
+summary::before {
+  content: "▶";
+  color: var(--cheatsheet-nodit-color);
+  position: absolute;
+  text-align: center;
+  font-size: 0.9rem;
+  left: -1.2rem;
+  top: 0;
+}
+
+/* Open state marker */
+details[open] summary::before {
+  content: "▼";
+}
+
+/* ========================================
+  Code Block Syntax Highlighting (Shiki)
+======================================== */
+
+/* Code block container (pre) */
+pre {
+  margin-bottom: 1rem;
+}
+
+/* pretty-code (shiki) recommend */
+pre > code {
+  display: grid;
+  font-size: 0.875em;
+}
+
+/* Fenced Code block - line style */
+pre span[data-line] {
+  display: inline-block;
+  padding-left: 1rem; /* px-4 */
+  padding-right: 1rem;
+  padding-top: 2px; /* py-0.5 → 0.125rem ≈ 2px */
+  padding-bottom: 2px;
+  line-height: 1.375; /* leading-snug (≈ 1.375) */
+}
+
+/* Fenced Code block - title style */
+/* Works for both <div> and <figcaption> titles */
+[data-rehype-pretty-code-title] {
+  padding: 0.75rem 1.25rem;
+  font-family: NanumGothicCoding, SFMono-Regular, Menlo, Monaco, Consolas,
+    monospace;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--cheatsheet-nodit-color);
+  background-color: #22242a;
+  /* border: 1px solid #2b2b2b; */
+  border-bottom-width: 0;
+  border-radius: 0.5rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* If you still need the “title sits directly above pre” rule: */
+[data-rehype-pretty-code-title] + pre {
+  margin-top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/* Code block container rounded everywhere */
+pre[data-theme] {
+  border-radius: 0.75rem;
+  /* background-color: #191c22; */
+  font-family: NanumGothicCoding, SFMono-Regular, Menlo, Monaco, Consolas,
+    monospace;
+  max-width: 100%;
+  box-sizing: border-box;
+  white-space: pre-wrap; /* preserve spaces + allow wrapping */
+  word-break: break-word; /* break very long tokens if needed */
+  overflow-x: hidden; /* just in case */
+}
+
+/* If there is a title before the code block, remove top rounding */
+[data-rehype-pretty-code-title] + pre[data-theme] {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/* Add space BEFORE first line */
+pre[data-theme] > code::before {
+  content: "";
+  display: block;
+  height: 0.75rem; /* adjust */
+}
+
+/* Add space AFTER last line */
+pre[data-theme] > code::after {
+  content: "";
+  display: block;
+  height: 0.75rem; /* adjust */
+}
+
+/* Hide copy button by default */
+[data-rehype-pretty-code-figure] .rehype-pretty-copy {
+  border: none;
+  background: transparent;
+  opacity: 0;
+}
+
+/* When you hover the entire code block, show the button */
+[data-rehype-pretty-code-figure]:hover .rehype-pretty-copy {
+  opacity: 1;
+}
+
+/* Code Line Highlight */
+/* Fenced Code block - line highlight */
+.prose code span[data-highlighted-line] {
+  border-color: transparent;
+  background-color: rgba(
+    99,
+    102,
+    241,
+    0.1
+  ); /* bg-indigo-400 with opacity 10% */
+}
+
+/* ========================================
+  Inline Code Styling
+======================================== */
+/* Inline code block backtick display: none */
+.prose :not(pre) > code::before,
+.prose :not(pre) > code::after {
+  display: none;
+}
+
+/* Inline code block style */
+.prose :not(pre) > code {
+  background-color: rgb(17, 24, 39);
+  color: var(--cheatsheet-nodit-color);
+  /* border: 1px solid rgb(229, 231, 235); border-gray-200 */
+  font-family: monospace; /* font-mono */
+  font-size: 0.9rem; /* text-sm (14px) */
+  vertical-align: middle; /* align-middle */
+  padding: 0.125rem 0.25rem; /* py-0.5 px-1 */
+  border-radius: 0.25rem; /* rounded */
+}
+
+/* ========================================
+  Callout (Markdown Alert)
+======================================== */
+.markdown-alert {
+  margin-top: 16px;
+  border-left: 0.1rem solid var(--cheatsheet-nodit-color) !important;
+}
+
+.markdown-alert-title {
+  color: var(--cheatsheet-nodit-color) !important;
+}
+
+.markdown-alert ul {
+  padding-left: 20px;
+}
+
+/* ========================================
+  Tables
+======================================== */
+
+/* Base table style */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+  color: var(--cheatsheet-nodit-color);
+}
+
+/* Borders + structure */
+table th,
+table td {
+  border: 1px solid #aaa;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+/* Header style (kept after th,td for proper override) */
+table th {
+  background-color: #22242a;
+  font-weight: 600;
+}
